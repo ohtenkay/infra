@@ -12,7 +12,7 @@ in
       nixos.shell
       nixos.stylix
       nixos.nixblade-hardware
-      # nixos.nvidia
+      nixos.nvidia
       nixos.neovim
 
       {

@@ -7,7 +7,8 @@
 
       stylix = {
         enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml"; # https://tinted-theming.github.io/tinted-gallery/
+        # https://tinted-theming.github.io/tinted-gallery/
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
         fonts = {
           monospace = {
             package = pkgs.nerd-fonts.jetbrains-mono;

@@ -1,5 +1,6 @@
 { ... }:
 {
+  # TODO: try out two boot configurations, one with the dGPU enabled and one with it disabled
   flake.modules.nixos.nvidia =
     { config, ... }:
     {
