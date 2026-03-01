@@ -27,8 +27,8 @@
                 left = [
                   { id = "Launcher"; }
                   { id = "Clock"; }
-                  { id = "ActiveWindow"; }
-                  { id = "MediaMini"; }
+                  # { id = "ActiveWindow"; }
+                  # { id = "MediaMini"; }
                 ];
                 center = [
                   {

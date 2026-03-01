@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   flake.modules.nixos.desktop =
     { pkgs, ... }:
@@ -34,11 +34,26 @@
             shell = "zsh";
             cursor_trail = 3;
             enable_audio_bell = false;
+            background_opacity = lib.mkForce "0.90";
           };
         };
 
         programs.niri.settings = {
           prefer-no-csd = true;
+
+          outputs = {
+            "HDMI-A-1" = {
+              mode = {
+                width = 2560;
+                height = 1440;
+                refresh = 144.006;
+              };
+              scale = 1.25;
+            };
+            "eDP-1" = {
+              scale = 1.25;
+            };
+          };
 
           layout = {
             gaps = 0;
@@ -143,10 +158,6 @@
             };
 
             # Focus columns/windows
-            "Mod+Left".action.focus-column-left = [ ];
-            "Mod+Down".action.focus-window-down = [ ];
-            "Mod+Up".action.focus-window-up = [ ];
-            "Mod+Right".action.focus-column-right = [ ];
             "Mod+H".action.focus-column-left = [ ];
             "Mod+J".action.focus-window-down = [ ];
             "Mod+K".action.focus-window-up = [ ];
