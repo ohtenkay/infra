@@ -14,6 +14,7 @@ in
       nixos.nixblade-hardware
       nixos.nvidia
       nixos.neovim
+      nixos.docker
 
       {
         networking.hostName = "nixblade";
