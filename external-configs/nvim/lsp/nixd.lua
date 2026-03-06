@@ -2,7 +2,7 @@
 
 -- Hardcoded path to the NixOS flake. All nixd expressions reference this
 -- so that completion works regardless of which directory neovim is opened from.
-local flake = '/home/ondrej/nixblade'
+local flake = '/home/ondrej/infra'
 
 return {
   settings = {

@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   # TODO: This is a bit hacky, explore other options
-  flakeRoot = "/home/ondrej/nixblade";
+  flakeRoot = "/home/ondrej/infra";
 in
 {
   flake.modules.nixos.base =
