@@ -1,4 +1,3 @@
-# Git configuration via home-manager, with email managed by agenix.
 { ... }:
 {
   flake.modules.nixos.dev = {
@@ -25,7 +24,14 @@
             };
           };
 
-          delta.enable = true;
+          delta = {
+            enable = true;
+            enableGitIntegration = true;
+            options = {
+              syntax-theme = "base16-stylix";
+              line-numbers = true;
+            };
+          };
 
           lazygit = {
             enable = true;
@@ -34,14 +40,15 @@
                 pagers = [
                   {
                     colorArg = "always";
-                    pager = "delta --dark --line-numbers --hunk-header-style=omit --paging=never";
-                    # --syntax-theme 'Kanagawa Dragon'";
+                    pager = "delta --hunk-header-style=omit --paging=never";
                   }
                 ];
                 overrideGpg = true;
               };
             };
           };
+
+          bat.enable = true;
         };
       };
   };
