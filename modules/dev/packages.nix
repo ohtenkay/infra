@@ -19,6 +19,13 @@
         vlc
 
         yt-dlp
+        nautilus
+        ntfs3g
+        udisks2
+        gvfs
+        kdePackages.dolphin
+        kdePackages.kio-extras
+        thunar
       ];
     };
 }

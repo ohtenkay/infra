@@ -10,6 +10,7 @@
         rust-analyzer
         rustfmt
         clippy
+        cargo-outdated
       ];
     };
 }

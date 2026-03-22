@@ -10,7 +10,6 @@
         programs = {
           git = {
             enable = true;
-            settings.user.name = "Ondřej Hložek";
             includes = [
               { path = config.age.secrets.git-email.path; }
             ];
@@ -19,8 +18,15 @@
               signByDefault = true;
             };
             settings = {
-              gpg.format = "ssh";
-              gpg.ssh.allowedSignersCommand = "sh -c 'echo \"$1 $(cat ~/.ssh/id_ed25519.pub)\"'";
+              user.name = "Ondřej Hložek";
+              gpg = {
+                format = "ssh";
+                ssh = {
+                  allowedSignersCommand = "sh -c 'echo \"$1 $(cat ~/.ssh/id_ed25519.pub)\"'";
+
+                };
+              };
+              init.defaultBranch = "main";
             };
           };
 
