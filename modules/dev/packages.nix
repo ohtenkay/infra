@@ -26,6 +26,9 @@
         kdePackages.dolphin
         kdePackages.kio-extras
         thunar
+
+        mermaid-cli
+        mupdf
       ];
     };
 }
