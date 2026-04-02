@@ -9,4 +9,6 @@ vim.lsp.enable {
   'hls',
   'rust_analyzer',
   'gopls',
+  'helm_ls',
+  'yamlls',
 }

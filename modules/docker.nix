@@ -15,6 +15,10 @@
       environment.systemPackages = with pkgs; [
         dive
         openshift
+        kubernetes
+        kubernetes-helm
+        helm-ls
+        yaml-language-server
       ];
     };
 }
