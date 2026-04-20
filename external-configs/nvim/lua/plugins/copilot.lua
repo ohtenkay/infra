@@ -21,9 +21,9 @@ return {
         },
       },
       nes = {
-        enabled = true,
+        enabled = false,
         keymap = {
-          accept_and_goto = '<M-L>',
+          accept_and_goto = '<M-j>',
           accept = false,
           dismiss = '<Esc>',
         },

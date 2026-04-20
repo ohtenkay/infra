@@ -1,14 +1,17 @@
 local lombok_helper = require 'helpers.lombok'
 
 local lombok_jar = lombok_helper.get_latest_lombok()
-if not lombok_jar then
+local cmd = { 'jdtls' }
+
+if lombok_jar then
+  table.insert(cmd, '--jvm-arg=-javaagent:' .. lombok_jar)
+else
   vim.notify('Could not find any Lombok JAR in /nix/store', vim.log.levels.ERROR)
 end
 
--- Has to be done by calling the api, returning a table doesn't work
+---@type vim.lsp.Config
 vim.lsp.config.jdtls = {
-  cmd = {
-    'jdtls',
-    '--jvm-arg=-javaagent:' .. (lombok_jar or ''),
-  },
+  cmd = cmd,
 }
+
+return {}
