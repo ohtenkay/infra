@@ -29,6 +29,10 @@
 
         mermaid-cli
         mupdf
+
+        qbittorrent-enhanced
+        terraform
+        terraform-ls
       ];
     };
 }

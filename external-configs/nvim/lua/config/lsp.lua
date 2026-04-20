@@ -3,7 +3,7 @@ vim.lsp.enable {
   -- 'kotlin_lsp',
   'ts_ls',
   'svelte',
-  'tailwindcss',
+  -- 'tailwindcss',
   'nixd',
   'jdtls',
   'hls',
@@ -11,4 +11,5 @@ vim.lsp.enable {
   'gopls',
   'helm_ls',
   'yamlls',
+  'terraformls',
 }
