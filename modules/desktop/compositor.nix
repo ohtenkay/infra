@@ -43,6 +43,7 @@
 
           outputs = {
             "HDMI-A-1" = {
+              focus-at-startup = true;
               mode = {
                 width = 2560;
                 height = 1440;
@@ -62,6 +63,40 @@
           };
 
           environment."NIXOS_OZONE_WL" = "1";
+
+          workspaces = {
+            "1".open-on-output = "HDMI-A-1";
+            "2".open-on-output = "HDMI-A-1";
+          };
+
+          spawn-at-startup = [
+            { argv = [ "kitty" ]; }
+            { argv = [ "firefox" ]; }
+          ];
+
+          window-rules = [
+            {
+              matches = [
+                {
+                  app-id = "^kitty$";
+                  at-startup = true;
+                }
+              ];
+              open-on-workspace = "1";
+              open-maximized = true;
+            }
+            {
+              matches = [
+                {
+                  app-id = "^firefox$";
+                  at-startup = true;
+                }
+              ];
+              open-on-workspace = "2";
+            }
+          ];
+
+          animations.workspace-switch.enable = false;
 
           binds = {
             # Terminal
@@ -246,8 +281,8 @@
             "Mod+Ctrl+Shift+WheelScrollUp".action.move-column-left = [ ];
 
             # Focus workspace by number
-            "Mod+1".action.focus-workspace = 1;
-            "Mod+2".action.focus-workspace = 2;
+            "Mod+1".action.focus-workspace = "1";
+            "Mod+2".action.focus-workspace = "2";
             "Mod+3".action.focus-workspace = 3;
             "Mod+4".action.focus-workspace = 4;
             "Mod+5".action.focus-workspace = 5;
@@ -257,8 +292,8 @@
             "Mod+9".action.focus-workspace = 9;
 
             # Move column to workspace by number
-            "Mod+Ctrl+1".action.move-column-to-workspace = 1;
-            "Mod+Ctrl+2".action.move-column-to-workspace = 2;
+            "Mod+Ctrl+1".action.move-column-to-workspace = "1";
+            "Mod+Ctrl+2".action.move-column-to-workspace = "2";
             "Mod+Ctrl+3".action.move-column-to-workspace = 3;
             "Mod+Ctrl+4".action.move-column-to-workspace = 4;
             "Mod+Ctrl+5".action.move-column-to-workspace = 5;
