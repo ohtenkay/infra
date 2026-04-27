@@ -33,6 +33,7 @@
         qbittorrent-enhanced
         terraform
         terraform-ls
+        lemminx
       ];
     };
 }

@@ -12,4 +12,5 @@ vim.lsp.enable {
   'helm_ls',
   'yamlls',
   'terraformls',
+  'lemminx',
 }
