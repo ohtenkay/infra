@@ -1,9 +1,8 @@
----@type vim.lsp.Config
-
 -- Hardcoded path to the NixOS flake. All nixd expressions reference this
 -- so that completion works regardless of which directory neovim is opened from.
 local flake = '/home/ondrej/infra'
 
+---@type vim.lsp.Config
 return {
   settings = {
     nixd = {

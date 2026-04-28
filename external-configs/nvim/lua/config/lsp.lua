@@ -1,9 +1,7 @@
 vim.lsp.enable {
   'lua_ls',
-  -- 'kotlin_lsp',
   'ts_ls',
-  'svelte',
-  -- 'tailwindcss',
+  'tailwindcss',
   'nixd',
   'jdtls',
   'hls',
@@ -13,4 +11,5 @@ vim.lsp.enable {
   'yamlls',
   'terraformls',
   'lemminx',
+  'fsautocomplete',
 }

@@ -34,6 +34,8 @@
         terraform
         terraform-ls
         lemminx
+
+        btop
       ];
     };
 }

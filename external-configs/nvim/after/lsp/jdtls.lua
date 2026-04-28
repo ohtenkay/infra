@@ -10,8 +10,6 @@ else
 end
 
 ---@type vim.lsp.Config
-vim.lsp.config.jdtls = {
+return {
   cmd = cmd,
 }
-
-return {}
