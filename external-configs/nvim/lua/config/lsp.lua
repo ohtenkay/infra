@@ -12,4 +12,5 @@ vim.lsp.enable {
   'terraformls',
   'lemminx',
   'fsautocomplete',
+  'tinymist',
 }
