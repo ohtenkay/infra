@@ -36,6 +36,13 @@
         lemminx
 
         btop
+
+        libreoffice
+        zathura
+
+        plantuml
+        graphviz
+        inotify-tools
       ];
     };
 }
