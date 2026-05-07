@@ -14,9 +14,6 @@
         programs.noctalia-shell = {
           enable = true;
 
-          # Start Noctalia automatically via systemd after the Wayland session is ready.
-          systemd.enable = true;
-
           settings = lib.mkForce {
             bar = {
               position = "top";

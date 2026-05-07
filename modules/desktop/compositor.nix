@@ -92,6 +92,7 @@
           };
 
           spawn-at-startup = [
+            { argv = [ "noctalia-shell" ]; }
             { argv = [ "kitty" ]; }
             { argv = [ "firefox" ]; }
           ];

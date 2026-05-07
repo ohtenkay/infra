@@ -39,6 +39,8 @@ in
           homeDirectory = "/home/ondrej";
           stateVersion = "25.11";
         };
+
+        gtk.gtk4.theme = null;
       };
     };
 }
