@@ -12,7 +12,7 @@
             autosuggestion.enable = true;
             syntaxHighlighting.enable = true;
             shellAliases = {
-              rebuild = "sudo nixos-rebuild switch --flake ~/infra";
+              nrs = "sudo nixos-rebuild switch --flake path:/home/ondrej/infra";
             };
             initContent = ''
               eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
