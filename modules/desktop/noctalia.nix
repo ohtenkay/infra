@@ -59,7 +59,6 @@
             };
 
             colorSchemes = {
-              useWallpaperColors = true;
               darkMode = true;
             };
           };

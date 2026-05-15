@@ -43,6 +43,8 @@
         plantuml
         graphviz
         inotify-tools
+        ripgrep-all
+        qpdf
       ];
     };
 }
