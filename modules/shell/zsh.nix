@@ -13,6 +13,7 @@
             syntaxHighlighting.enable = true;
             shellAliases = {
               nrs = "sudo nixos-rebuild switch --flake path:/home/ondrej/infra";
+              nfu = "nix flake update --flake path:/home/ondrej/infra";
             };
             initContent = ''
               eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
