@@ -24,6 +24,7 @@
       environment.systemPackages = with pkgs; [
         xwayland-satellite
         fuzzel
+        wl-mirror
       ];
 
       home-manager.users.ondrej = {

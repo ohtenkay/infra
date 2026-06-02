@@ -4,7 +4,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        nodejs_25
+        nodejs_24
         home-manager
 
         python3
@@ -30,7 +30,7 @@
         mermaid-cli
         mupdf
 
-        qbittorrent-enhanced
+        qbittorrent
         terraform
         terraform-ls
         lemminx
@@ -45,6 +45,11 @@
         inotify-tools
         ripgrep-all
         qpdf
+        obs-studio
+        ffmpeg
+
+        transmission_4-qt
+
       ];
     };
 }

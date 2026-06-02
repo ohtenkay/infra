@@ -48,6 +48,7 @@
         (jdt-language-server.override { jdk = pkgs.jdk25; })
         lombok
         palantirJavaFormat
+        jetbrains.idea
       ];
     };
 }
