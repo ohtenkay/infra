@@ -64,6 +64,8 @@
         programs.niri.settings = {
           prefer-no-csd = true;
 
+          debug.honor-xdg-activation-with-invalid-serial = [ ];
+
           outputs = {
             "HDMI-A-1" = {
               focus-at-startup = true;
@@ -93,7 +95,7 @@
           };
 
           spawn-at-startup = [
-            { argv = [ "noctalia-shell" ]; }
+            { argv = [ "noctalia" ]; }
             { argv = [ "kitty" ]; }
             { argv = [ "firefox" ]; }
           ];
@@ -117,6 +119,14 @@
                 }
               ];
               open-on-workspace = "2";
+            }
+            {
+              matches = [
+                { app-id = "^dev\\.noctalia\\.Noctalia\\.Settings$"; }
+              ];
+              open-floating = true;
+              default-column-width.fixed = 1080;
+              default-window-height.fixed = 920;
             }
           ];
 

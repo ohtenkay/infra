@@ -11,56 +11,58 @@
       home-manager.users.ondrej = {
         imports = [ inputs.noctalia.homeModules.default ];
 
-        programs.noctalia-shell = {
+        programs.noctalia = {
           enable = true;
 
-          settings = lib.mkForce {
-            bar = {
-              position = "top";
-              density = "default";
-              floating = true;
-              backgroundOpacity = 0.93;
-              widgets = {
-                left = [
-                  { id = "Launcher"; }
-                  { id = "Clock"; }
-                  # { id = "ActiveWindow"; }
-                  # { id = "MediaMini"; }
-                ];
-                center = [
-                  {
-                    id = "Workspace";
-                    hideUnoccupied = false;
-                    labelMode = "none";
-                  }
-                ];
-                right = [
-                  { id = "Tray"; }
-                  { id = "NotificationHistory"; }
-                  { id = "Battery"; }
-                  { id = "Volume"; }
-                  { id = "Brightness"; }
-                  { id = "Network"; }
-                  { id = "Bluetooth"; }
-                  { id = "ControlCenter"; }
-                ];
-              };
+          settings = {
+            shell = {
+              corner_radius_scale = 1;
+              font_family = "JetBrainsMono Nerd Font Mono";
+              niri_overview_type_to_launch_enabled = true;
             };
 
-            general = {
-              radiusRatio = 1;
-              animationSpeed = 1;
+            # shell.animation.speed = 1;
+
+            theme = {
+              mode = lib.mkForce "dark";
+              source = lib.mkForce "community";
+              community_palette = "Kanagawa Dragon";
             };
 
-            notifications = {
-              enabled = true;
-              location = "top_right";
-              normalUrgencyDuration = 8;
+            # notification = {
+            #   enable_daemon = true;
+            #   position = "bottom_right";
+            #   background_opacity = 0.97;
+            # };
+            #
+            bar.main = {
+              #   position = "top";
+              #   background_opacity = 0.93;
+              margin_ends = 5;
+              margin_edge = 5;
+              margin_opposite_edge = 5;
+              #   radius = 12;
+              #   start = [
+              #     "launcher"
+              #     "clock"
+              #   ];
+              #   center = [ "workspaces" ];
+              #   end = [
+              #     "tray"
+              #     "notifications"
+              #     "battery"
+              #     "volume"
+              #     "brightness"
+              #     "network"
+              #     "bluetooth"
+              #     "control-center"
+              #   ];
             };
 
-            colorSchemes = {
-              darkMode = true;
-            };
+            # widget.workspaces = {
+            #   display = "none";
+            #   hide_when_empty = false;
+            # };
           };
         };
       };

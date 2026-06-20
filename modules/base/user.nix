@@ -33,14 +33,10 @@ in
         extraSpecialArgs = { inherit flakeRoot; };
       };
 
-      home-manager.users.ondrej = {
-        home = {
-          username = "ondrej";
-          homeDirectory = "/home/ondrej";
-          stateVersion = "25.11";
-        };
-
-        gtk.gtk4.theme = null;
+      home-manager.users.ondrej.home = {
+        username = "ondrej";
+        homeDirectory = "/home/ondrej";
+        stateVersion = "25.11";
       };
     };
 }

@@ -50,6 +50,9 @@
 
         transmission_4-qt
 
+        devenv
+        codex
+        dust
       ];
     };
 }
