@@ -39,6 +39,22 @@
             };
           };
 
+          gh = {
+            enable = true;
+            settings = {
+              editor = "nvim";
+              # pager = "delta --hunk-header-style=omit --paging=never";
+            };
+          };
+
+          gh-dash = {
+            enable = true;
+            settings = {
+              editor = "nvim";
+              # pager = "delta --hunk-header-style=omit --paging=never";
+            };
+          };
+
           lazygit = {
             enable = true;
             settings = {
