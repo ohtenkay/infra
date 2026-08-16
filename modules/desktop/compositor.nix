@@ -72,9 +72,9 @@
               mode = {
                 width = 2560;
                 height = 1440;
-                refresh = 144.006;
+                # refresh = 144.006;
               };
-              scale = 1.25;
+              # scale = 1.25;
             };
             "eDP-1" = {
               scale = 1.25;
@@ -127,6 +127,15 @@
               open-floating = true;
               default-column-width.fixed = 1080;
               default-window-height.fixed = 920;
+            }
+            {
+              matches = [
+                {
+                  app-id = "^Emulator$";
+                  title = "^Emulator$";
+                }
+              ];
+              open-floating = false;
             }
           ];
 
