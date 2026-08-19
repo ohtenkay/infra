@@ -53,6 +53,9 @@
         devenv
         codex
         dust
+
+        proton-vpn-cli
+
       ];
     };
 }
