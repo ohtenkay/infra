@@ -59,10 +59,10 @@
             enable = true;
             settings = {
               git = {
-                pagers = [
+                diffRenderers = [
                   {
                     colorArg = "always";
-                    pager = "delta --hunk-header-style=omit --paging=never";
+                    command = "delta --hunk-header-style=omit --paging=never";
                   }
                 ];
                 overrideGpg = true;
