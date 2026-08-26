@@ -13,4 +13,5 @@ vim.lsp.enable {
   'lemminx',
   'fsautocomplete',
   'tinymist',
+  'pyright',
 }
