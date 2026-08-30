@@ -14,4 +14,5 @@ vim.lsp.enable {
   'fsautocomplete',
   'tinymist',
   'pyright',
+  'astro',
 }
