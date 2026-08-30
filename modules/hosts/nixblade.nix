@@ -19,6 +19,7 @@ in
       nixos.nixblade-hardware
       nixos.nvidia
       nixos.neovim
+      nixos.software
       nixos.docker
 
       {
