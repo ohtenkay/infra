@@ -25,6 +25,7 @@
         xwayland-satellite
         fuzzel
         wl-mirror
+        wl-clipboard
       ];
 
       home-manager.users.ondrej = {
