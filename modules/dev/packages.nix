@@ -55,7 +55,6 @@
         dust
 
         proton-vpn-cli
-
       ];
     };
 }
