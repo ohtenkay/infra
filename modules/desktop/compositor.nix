@@ -74,6 +74,11 @@
 
             debug.honor-xdg-activation-with-invalid-serial = { };
 
+            input.touchpad = {
+              tap = { };
+              natural-scroll = { };
+            };
+
             layout = {
               gaps = 0;
               border.off = { };
