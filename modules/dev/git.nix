@@ -2,7 +2,7 @@
 {
   flake.modules.nixos.dev = {
     home-manager.users.ondrej =
-      { config, ... }:
+      { config, pkgs, ... }:
 
       {
         age.secrets.git-email.file = ../../secrets/git-email.age;
@@ -27,6 +27,7 @@
                 };
               };
               init.defaultBranch = "main";
+              pull.rebase = true;
             };
           };
 
@@ -45,6 +46,7 @@
               editor = "nvim";
               # pager = "delta --hunk-header-style=omit --paging=never";
             };
+            extensions = [ pkgs.gh-stack ];
           };
 
           gh-dash = {
