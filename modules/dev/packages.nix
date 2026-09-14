@@ -38,7 +38,6 @@
         btop
 
         libreoffice
-        zathura
 
         plantuml
         graphviz
