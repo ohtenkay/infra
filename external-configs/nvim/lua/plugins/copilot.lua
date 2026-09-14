@@ -32,6 +32,9 @@ return {
         yaml = true,
         markdown = true,
       },
+      server = {
+        type = 'nodejs',
+      },
     },
   },
 }
