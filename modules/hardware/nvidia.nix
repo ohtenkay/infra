@@ -37,8 +37,8 @@
         # Preserve VRAM state across suspend/resume to avoid graphical corruption
         hardware.nvidia.powerManagement.enable = true;
 
-        # Fine-grained power management: fully powers down dGPU when idle (Turing+)
-        hardware.nvidia.powerManagement.finegrained = true;
+        # Fine-grained runtime PM can prevent the NVIDIA DRM device from initializing.
+        hardware.nvidia.powerManagement.finegrained = false;
 
         # Use the stable driver package
         hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
