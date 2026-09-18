@@ -234,19 +234,21 @@
               "XF86MonBrightnessUp" = {
                 _props.allow-when-locked = true;
                 spawn = [
-                  "brightnessctl"
-                  "--class=backlight"
-                  "set"
-                  "+10%"
+                  "noctalia"
+                  "msg"
+                  "brightness-up"
+                  "current"
+                  "10"
                 ];
               };
               "XF86MonBrightnessDown" = {
                 _props.allow-when-locked = true;
                 spawn = [
-                  "brightnessctl"
-                  "--class=backlight"
-                  "set"
-                  "10%-"
+                  "noctalia"
+                  "msg"
+                  "brightness-down"
+                  "current"
+                  "10"
                 ];
               };
 

@@ -15,6 +15,13 @@
           enable = true;
 
           settings = {
+            brightness = {
+              enable_ddcutil = true;
+
+              monitor."eDP-1".backend = "backlight";
+              monitor."HDMI-A-1".backend = "ddcutil";
+            };
+
             shell = {
               corner_radius_scale = 1;
               font_family = "JetBrainsMono Nerd Font Mono";
