@@ -116,6 +116,14 @@
                 };
               }
               { spawn-at-startup._args = [ "noctalia" ]; }
+              {
+                # The external monitor's DDC bus can become ready after Noctalia's initial scan.
+                spawn-at-startup._args = [
+                  "sh"
+                  "-c"
+                  "sleep 5; noctalia msg config-reload"
+                ];
+              }
               { spawn-at-startup._args = [ "kitty" ]; }
               { spawn-at-startup._args = [ "firefox" ]; }
               {
@@ -234,19 +242,21 @@
               "XF86MonBrightnessUp" = {
                 _props.allow-when-locked = true;
                 spawn = [
-                  "brightnessctl"
-                  "--class=backlight"
-                  "set"
-                  "+10%"
+                  "noctalia"
+                  "msg"
+                  "brightness-up"
+                  "current"
+                  "10"
                 ];
               };
               "XF86MonBrightnessDown" = {
                 _props.allow-when-locked = true;
                 spawn = [
-                  "brightnessctl"
-                  "--class=backlight"
-                  "set"
-                  "10%-"
+                  "noctalia"
+                  "msg"
+                  "brightness-down"
+                  "current"
+                  "10"
                 ];
               };
 
