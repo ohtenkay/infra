@@ -22,6 +22,31 @@
         icon = "chromium";
         categories = [ "Development" ];
       };
+
+      playwrightDriver = pkgs.playwright-driver.overrideAttrs (old: {
+        passthru = old.passthru // {
+          browsers = old.passthru."browsers-chromium";
+        };
+      });
+      playwrightTest = pkgs.playwright-test.overrideAttrs (old: {
+        # Replace both the browser path and its hidden string context dependency.
+        installPhase =
+          builtins.appendContext
+            (builtins.replaceStrings
+              [ (builtins.unsafeDiscardStringContext "${pkgs.playwright-driver.browsers}") ]
+              [ "${playwrightDriver.browsers}" ]
+              (builtins.unsafeDiscardStringContext old.installPhase)
+            )
+            (
+              builtins.removeAttrs (builtins.getContext old.installPhase) [
+                (builtins.unsafeDiscardStringContext pkgs.playwright-driver.browsers.drvPath)
+              ]
+            );
+      });
+      playwrightMcp = pkgs.playwright-mcp.override {
+        playwright-driver = playwrightDriver;
+        playwright-test = playwrightTest;
+      };
     in
     {
       environment.systemPackages = [
@@ -33,7 +58,7 @@
         type = "local";
         enabled = false;
         command = [
-          "${pkgs.playwright-mcp}/bin/playwright-mcp"
+          "${playwrightMcp}/bin/playwright-mcp"
           "--cdp-endpoint"
           "http://127.0.0.1:9222"
         ];
