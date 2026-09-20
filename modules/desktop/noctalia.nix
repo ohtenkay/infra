@@ -13,6 +13,7 @@
 
         programs.noctalia = {
           enable = true;
+          systemd.enable = true;
 
           settings = {
             brightness = {
@@ -26,6 +27,7 @@
               corner_radius_scale = 1;
               font_family = "JetBrainsMono Nerd Font Mono";
               niri_overview_type_to_launch_enabled = true;
+              umbriel_overview_type_to_launch_enabled = true;
             };
 
             # shell.animation.speed = 1;

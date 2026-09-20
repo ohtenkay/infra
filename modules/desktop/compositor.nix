@@ -11,16 +11,6 @@
 
       environment.variables.BROWSER = "firefox";
 
-      services.greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "niri-session";
-            user = "ondrej";
-          };
-        };
-      };
-
       environment.systemPackages = with pkgs; [
         xwayland-satellite
         fuzzel
@@ -115,7 +105,6 @@
                   open-on-output = "HDMI-A-1";
                 };
               }
-              { spawn-at-startup._args = [ "noctalia" ]; }
               { spawn-at-startup._args = [ "kitty" ]; }
               { spawn-at-startup._args = [ "firefox" ]; }
               {
@@ -144,7 +133,7 @@
               {
                 window-rule._children = [
                   {
-                    match._props.app-id = "^dev\\.noctalia\\.Noctalia\\.Settings$";
+                    match._props.app-id = "^dev\\.noctalia\\.Noctalia$";
                   }
                   { open-floating = true; }
                   { default-column-width.fixed = 1080; }
@@ -181,8 +170,13 @@
 
               # Screen locker
               "Super+Alt+L" = {
-                _props.hotkey-overlay-title = "Lock the Screen: swaylock";
-                spawn = [ "swaylock" ];
+                _props.hotkey-overlay-title = "Lock the Screen: Noctalia";
+                spawn = [
+                  "noctalia"
+                  "msg"
+                  "session"
+                  "lock"
+                ];
               };
 
               # Screen reader toggle
