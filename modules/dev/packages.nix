@@ -20,7 +20,6 @@
         yt-dlp
         nautilus
         ntfs3g
-        udisks2
         gvfs
         kdePackages.dolphin
         kdePackages.kio-extras
@@ -45,6 +44,7 @@
         qpdf
         obs-studio
         ffmpeg
+        localsend
 
         transmission_4-qt
 
@@ -54,5 +54,10 @@
 
         proton-vpn-cli
       ];
+
+      services.udisks2.enable = true;
+      security.polkit.enable = true;
+
+      home-manager.users.ondrej.services.udiskie.enable = true;
     };
 }

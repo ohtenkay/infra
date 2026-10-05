@@ -21,6 +21,7 @@ in
         shell = pkgs.zsh;
         extraGroups = [
           "networkmanager"
+          "nordvpn"
           "wheel"
         ];
       };

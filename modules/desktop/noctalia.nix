@@ -4,9 +4,10 @@
     { lib, ... }:
     {
       # Prerequisites for Noctalia's wifi, bluetooth, power-profile, and battery features.
-      # networking.networkmanager.enable and hardware.bluetooth.enable are already set elsewhere.
       services.upower.enable = true;
       services.power-profiles-daemon.enable = true;
+      networking.networkmanager.enable = true;
+      hardware.bluetooth.enable = true;
 
       home-manager.users.ondrej = {
         imports = [ inputs.noctalia.homeModules.default ];

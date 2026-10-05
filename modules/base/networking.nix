@@ -10,6 +10,9 @@
         ];
       };
 
+      services.nordvpn.enable = true;
+      networking.firewall.checkReversePath = "loose";
+
       environment.systemPackages = with pkgs; [
         wifitui
       ];
