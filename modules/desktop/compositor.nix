@@ -81,8 +81,7 @@
             };
 
             layout = {
-              gaps = 0;
-              border.off = { };
+              border.width = 2;
               focus-ring.off = { };
             };
 
@@ -118,6 +117,12 @@
               }
               { spawn-at-startup._args = [ "kitty" ]; }
               { spawn-at-startup._args = [ "firefox" ]; }
+              {
+                window-rule = {
+                  geometry-corner-radius = 12;
+                  clip-to-geometry = true;
+                };
+              }
               {
                 window-rule._children = [
                   {
