@@ -37,7 +37,7 @@
             shell = "zsh";
             cursor_trail = 3;
             enable_audio_bell = false;
-            background_opacity = lib.mkForce "0.90";
+            background_opacity = lib.mkForce "0.94";
             tab_bar_edge = "bottom";
             tab_title_template = "{title}";
           };
@@ -121,6 +121,12 @@
                 window-rule = {
                   geometry-corner-radius = 12;
                   clip-to-geometry = true;
+                };
+              }
+              {
+                window-rule = {
+                  match._props.app-id = "^kitty$";
+                  draw-border-with-background = false;
                 };
               }
               {
