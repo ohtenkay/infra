@@ -26,6 +26,9 @@ in
         networking.hostName = "nixblade";
         nixpkgs.hostPlatform = "x86_64-linux";
 
+        # Work around the Blade firmware reporting the lid as closed after resume.
+        boot.kernelParams = [ "button.lid_init_state=open" ];
+
         my.hardware.nvidia.enable = lib.mkDefault true;
 
         specialisation = {
