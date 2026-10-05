@@ -17,3 +17,8 @@ set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to [D]efinition' })
 set('n', 'K', function()
   vim.lsp.buf.hover { border = 'rounded' }
 end, { desc = 'Hover Documentation with rounded border' })
+
+-- Yank the current filename to the system clipboard
+vim.keymap.set('n', '<leader>yf', function()
+  vim.fn.setreg('+', vim.fn.expand '%')
+end, { desc = 'Yank filename' })
