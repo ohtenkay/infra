@@ -17,6 +17,8 @@
           systemd.enable = true;
 
           settings = {
+            wallpaper.default.path = "${../../assets/wallpapers/kanagawa-wave.jpg}";
+
             brightness = {
               enable_ddcutil = true;
 
