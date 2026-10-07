@@ -81,6 +81,7 @@
             };
 
             layout = {
+              gaps = 4;
               border.width = 2;
               focus-ring.off = { };
             };
@@ -160,17 +161,6 @@
                   { open-floating = true; }
                   { default-column-width.fixed = 1080; }
                   { default-window-height.fixed = 920; }
-                ];
-              }
-              {
-                window-rule._children = [
-                  {
-                    match._props = {
-                      app-id = "^Emulator$";
-                      title = "^Emulator$";
-                    };
-                  }
-                  { open-floating = false; }
                 ];
               }
             ];
