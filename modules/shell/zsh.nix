@@ -11,6 +11,7 @@
             enableCompletion = true;
             autosuggestion.enable = true;
             syntaxHighlighting.enable = true;
+            defaultKeymap = "viins";
             shellAliases = {
               nrs = "sudo nixos-rebuild switch --flake path:/home/ondrej/infra";
               nfu = "nix flake update --flake path:/home/ondrej/infra";
