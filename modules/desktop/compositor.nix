@@ -104,6 +104,13 @@
                   scale = 1.25;
                 };
               }
+              # Park the Android emulator's separate toolbar before workspace 1.
+              {
+                workspace = {
+                  _args = [ "0" ];
+                  open-on-output = "HDMI-A-1";
+                };
+              }
               {
                 workspace = {
                   _args = [ "1" ];
@@ -161,6 +168,30 @@
                   { open-floating = true; }
                   { default-column-width.fixed = 1080; }
                   { default-window-height.fixed = 920; }
+                ];
+              }
+              {
+                window-rule._children = [
+                  {
+                    match._props = {
+                      app-id = "^Emulator$";
+                      title = "^Emulator$";
+                    };
+                  }
+                  { open-on-workspace = "0"; }
+                  { open-focused = false; }
+                  { open-floating = false; }
+                ];
+              }
+              {
+                window-rule._children = [
+                  {
+                    match._props = {
+                      app-id = "^Emulator$";
+                      title = "^Android Emulator - ";
+                    };
+                  }
+                  { open-floating = true; }
                 ];
               }
             ];
@@ -392,7 +423,10 @@
               "Mod+Ctrl+R".reset-window-height = { };
               "Mod+F".maximize-column = { };
               "Mod+Shift+F".fullscreen-window = { };
-              "Mod+Ctrl+F".expand-column-to-available-width = { };
+              "Mod+Ctrl+F" = {
+                _props.hotkey-overlay-title = "Expand window while keeping visible columns";
+                expand-column-to-available-width = { };
+              };
 
               # Centering
               "Mod+C".center-column = { };

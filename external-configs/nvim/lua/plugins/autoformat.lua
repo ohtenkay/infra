@@ -17,16 +17,6 @@ return {
     local default_opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        typescript = { 'prettierd' },
-        javascript = { 'prettierd' },
-        javascriptreact = { 'prettierd' },
-        typescriptreact = { 'prettierd' },
-        css = { 'prettierd' },
-        scss = { 'prettierd' },
-        html = { 'prettierd' },
-        json = { 'prettierd' },
-        jsonc = { 'prettierd' },
-        svelte = { 'prettierd' },
         java = { 'palantir-java-format' },
       },
       formatters = {
