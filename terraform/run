@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Run the pinned Terraform tools with local credentials and an ephemeral SSH agent."""
+
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tomllib
+
+
+def main():
+    root = Path(__file__).resolve().parent.parent
+    env = os.environ.copy()
+    arguments = sys.argv[1:] or ["plan"]
+
+    if not env.get("HCLOUD_TOKEN"):
+        config_home = Path(env.get("XDG_CONFIG_HOME", Path.home() / ".config"))
+        try:
+            config = tomllib.loads((config_home / "hcloud/cli.toml").read_text())
+            contexts = {item["name"]: item["token"] for item in config["contexts"]}
+            context = env.get("HCLOUD_CONTEXT") or (
+                "infra-terraform" if "infra-terraform" in contexts else config["active_context"]
+            )
+            env["HCLOUD_TOKEN"] = contexts[context]
+        except (OSError, KeyError, tomllib.TOMLDecodeError):
+            sys.exit("Set HCLOUD_TOKEN or configure an hcloud context before running Terraform.")
+
+    agent_started = False
+    try:
+        if arguments[0] == "apply":
+            key = Path.home() / ".ssh/id_ed25519_servnix"
+            if not key.is_file():
+                sys.exit(f"Missing deployment key: {key}")
+            result = subprocess.run(
+                ["ssh-agent", "-s"], check=True, capture_output=True, text=True, env=env
+            )
+            for name in ("SSH_AUTH_SOCK", "SSH_AGENT_PID"):
+                env[name] = re.search(rf"{name}=([^;]+);", result.stdout).group(1)
+            agent_started = True
+            subprocess.run(["ssh-add", str(key)], check=True, env=env)
+
+        return subprocess.run(
+            [
+                "nix", "develop", f"git+file://{root}", "--command",
+                "terraform", f"-chdir={root / 'terraform'}", *arguments,
+            ],
+            env=env,
+        ).returncode
+    finally:
+        if agent_started:
+            subprocess.run(["ssh-agent", "-k"], env=env, capture_output=True)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

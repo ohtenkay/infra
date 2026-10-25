@@ -1,0 +1,16 @@
+# Terraform downloads, state, plans, and local overrides.
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+__pycache__/
+
+# Provider checksums in .terraform.lock.hcl are committed.

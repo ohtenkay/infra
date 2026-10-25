@@ -14,16 +14,26 @@
       "virtio_scsi"
       "virtio_blk"
     ];
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    # Boot on either Hetzner firmware mode without depending on bootstrap images.
+    boot.loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+    };
+    boot.loader.efi.canTouchEfiVariables = false;
 
-    # Confirmed on servnix: 40 GB primary disk, UEFI firmware.
+    # Hetzner's primary disk. Include both BIOS and EFI boot partitions.
     disko.devices.disk.main = {
       type = "disk";
       device = "/dev/sda";
       content = {
         type = "gpt";
         partitions = {
+          BIOS = {
+            size = "1M";
+            type = "EF02";
+          };
           ESP = {
             size = "512M";
             type = "EF00";

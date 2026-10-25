@@ -4,8 +4,8 @@
     home-manager.users.ondrej.programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
+      includes = [ "~/.ssh/servnix-address.conf" ];
       settings.servnix = {
-        HostName = "2.31.56.62";
         User = "ondrej";
         IdentityFile = "~/.ssh/id_ed25519_servnix";
         IdentitiesOnly = true;
