@@ -1,14 +1,9 @@
 { ... }:
 {
   flake.modules.nixos.neovim =
-    { flakeRoot, pkgs, ... }:
+    { pkgs, ... }:
     {
-      home-manager.users.ondrej =
-        { config, ... }:
-        {
-          xdg.configFile."nvim".source =
-            config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/external-configs/nvim";
-        };
+      home-manager.users.ondrej.xdg.configFile."nvim".source = ../../external-configs/nvim;
 
       environment.systemPackages = with pkgs; [
         neovim

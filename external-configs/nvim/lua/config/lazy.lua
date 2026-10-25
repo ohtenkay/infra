@@ -16,6 +16,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
+  -- Keep mutable plugin state outside the store-backed configuration.
+  lockfile = vim.fn.stdpath 'state' .. '/lazy-lock.json',
   spec = {
     -- Import plugins
     { import = 'plugins' },

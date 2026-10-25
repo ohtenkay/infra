@@ -2,7 +2,7 @@
 # Secrets are decrypted at activation time using the user's SSH key.
 { inputs, ... }:
 {
-  flake.modules.nixos.base =
+  flake.modules.nixos.user-secrets =
     { pkgs, ... }:
     {
       environment.systemPackages = [
