@@ -52,6 +52,7 @@
         dust
 
         proton-vpn-cli
+        hcloud
       ];
 
       services.udisks2.enable = true;
