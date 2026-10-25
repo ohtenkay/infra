@@ -11,5 +11,5 @@ output "server_id" {
 }
 
 output "ssh_command" {
-  value = "ssh -i ~/.ssh/id_ed25519_servnix ondrej@${hcloud_primary_ip.ipv4.ip_address}"
+  value = "ssh ondrej@${hcloud_primary_ip.ipv4.ip_address}"
 }

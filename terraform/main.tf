@@ -8,8 +8,8 @@ locals {
 }
 
 resource "hcloud_ssh_key" "admin" {
-  name       = "servnix-admin"
-  public_key = file("${path.module}/../keys/servnix-admin.pub")
+  name       = "ondrej-nixblade"
+  public_key = file("${path.module}/../keys/ondrej-nixblade.pub")
   labels     = local.labels
 }
 

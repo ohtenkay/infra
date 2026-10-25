@@ -7,8 +7,6 @@
       includes = [ "~/.ssh/servnix-address.conf" ];
       settings.servnix = {
         User = "ondrej";
-        IdentityFile = "~/.ssh/id_ed25519_servnix";
-        IdentitiesOnly = true;
       };
     };
   };

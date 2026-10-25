@@ -2,7 +2,7 @@
 let
   nixos = config.flake.modules.nixos;
   adminKeys = [
-    (builtins.readFile ../../keys/servnix-admin.pub)
+    (builtins.readFile ../../keys/ondrej-nixblade.pub)
   ];
 in
 {
