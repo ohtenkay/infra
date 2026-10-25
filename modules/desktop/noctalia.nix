@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.noctalia =
     { lib, ... }:
     {
       # Prerequisites for Noctalia's wifi, bluetooth, power-profile, and battery features.

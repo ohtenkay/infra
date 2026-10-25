@@ -1,11 +1,14 @@
-{ lib, ... }:
+{ ... }:
 {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.niri =
     { pkgs, ... }:
     let
       emulatorToolbar = pkgs.writeShellApplication {
         name = "park-emulator-toolbar";
-        runtimeInputs = [ pkgs.niri pkgs.jq ];
+        runtimeInputs = [
+          pkgs.niri
+          pkgs.jq
+        ];
         text = ''
           park_toolbar() {
             local workspace_id workspace_index
@@ -36,66 +39,18 @@
       };
     in
     {
-      programs.firefox.enable = true;
       programs.niri = {
         enable = true;
         package = pkgs.niri;
       };
 
-      environment.variables.BROWSER = "firefox";
-
       environment.systemPackages = with pkgs; [
         xwayland-satellite
-        fuzzel
         wl-mirror
         wl-clipboard
       ];
 
       home-manager.users.ondrej = {
-        home.file.".local/share/applications/nordvpn.desktop".text = ''
-          [Desktop Entry]
-          Type=Application
-          Name=NordVPN CLI
-          Comment=Handles NordVPN browser login callbacks
-          Exec=nordvpn login --callback %u
-          MimeType=x-scheme-handler/nordvpn;
-          NoDisplay=true
-          Terminal=false
-        '';
-
-        programs.kitty = {
-          enable = true;
-          settings = {
-            hide_window_decorations = true;
-            shell = "zsh";
-            cursor_trail = 3;
-            enable_audio_bell = false;
-            background_opacity = lib.mkForce "0.94";
-            tab_bar_edge = "bottom";
-            tab_title_template = "{title}";
-          };
-
-          keybindings = {
-            "ctrl+shift+t" = "new_tab_with_cwd";
-            "ctrl+alt+1" = "goto_tab 1";
-            "ctrl+alt+2" = "goto_tab 2";
-            "ctrl+alt+3" = "goto_tab 3";
-            "ctrl+alt+4" = "goto_tab 4";
-            "ctrl+alt+5" = "goto_tab 5";
-            "ctrl+alt+6" = "goto_tab 6";
-            "ctrl+alt+7" = "goto_tab 7";
-            "ctrl+alt+8" = "goto_tab 8";
-            "ctrl+alt+9" = "goto_tab 9";
-
-            "ctrl+alt+s" = "save_as_session --use-foreground-process --base-dir ~/.local/share/kitty/sessions";
-            "ctrl+alt+p" = "goto_session ~/.local/share/kitty/sessions";
-            "ctrl+alt+w" = "close_session .";
-          };
-
-        };
-
-        home.file.".local/share/kitty/sessions/.keep".text = "";
-
         wayland.windowManager.niri = {
           enable = true;
           package = pkgs.niri;
@@ -222,8 +177,13 @@
 
               # App launcher
               "Mod+D" = {
-                _props.hotkey-overlay-title = "Run an Application: fuzzel";
-                spawn = [ "fuzzel" ];
+                _props.hotkey-overlay-title = "Run an Application: Noctalia";
+                spawn = [
+                  "noctalia"
+                  "msg"
+                  "panel-toggle"
+                  "launcher"
+                ];
               };
 
               # Screen locker

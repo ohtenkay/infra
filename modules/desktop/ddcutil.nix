@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.desktop =
+  flake.modules.nixos.ddcutil =
     { pkgs, ... }:
     {
       hardware.i2c.enable = true;

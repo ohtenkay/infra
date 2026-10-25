@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.greeter = {
     services.displayManager.noctalia-greeter = {
       enable = true;
       passwordlessSyncUsers = [ "ondrej" ];
