@@ -14,3 +14,8 @@ override.tf.json
 __pycache__/
 
 # Provider checksums in .terraform.lock.hcl are committed.
+
+# Local devenv state and overrides; devenv.lock is committed.
+.devenv/
+devenv.local.nix
+devenv.local.yaml

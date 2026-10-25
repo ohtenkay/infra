@@ -14,7 +14,6 @@
             defaultKeymap = "viins";
             shellAliases = {
               nrs = "sudo nixos-rebuild switch --flake path:/home/ondrej/infra";
-              nrs-servnix = "${flakeRoot}/terraform/run apply";
               nfu = "nix flake update --flake path:/home/ondrej/infra";
             };
             initContent = ''
