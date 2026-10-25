@@ -12,6 +12,8 @@ in
   flake.nixosConfigurations.nixblade = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       nixos.base
+      nixos.laptop-boot
+      nixos.laptop-networking
       nixos.desktop
       nixos.dev
       nixos.shell

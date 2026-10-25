@@ -6,8 +6,12 @@
     inputs.flake-parts.flakeModules.modules
   ];
 
-  # Optional now, since I currently don't use any perSystem.
   systems = [
     "x86_64-linux"
   ];
+
+  # Installation tooling uses the same pinned nixpkgs as the hosts.
+  perSystem = { pkgs, ... }: {
+    packages.nixos-anywhere = pkgs.nixos-anywhere;
+  };
 }

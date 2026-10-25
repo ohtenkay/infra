@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.base = {
+  flake.modules.nixos.laptop-boot = {
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.grub = {
       enable = true;

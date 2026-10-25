@@ -20,8 +20,6 @@ in
         description = "ondrej";
         shell = pkgs.zsh;
         extraGroups = [
-          "networkmanager"
-          "nordvpn"
           "wheel"
         ];
       };

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.base =
+  flake.modules.nixos.laptop-networking =
     { pkgs, ... }:
     {
       networking.networkmanager = {
@@ -12,6 +12,11 @@
 
       services.nordvpn.enable = true;
       networking.firewall.checkReversePath = "loose";
+
+      users.users.ondrej.extraGroups = [
+        "networkmanager"
+        "nordvpn"
+      ];
 
       environment.systemPackages = with pkgs; [
         wifitui

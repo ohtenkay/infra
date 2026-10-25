@@ -14,6 +14,7 @@
             defaultKeymap = "viins";
             shellAliases = {
               nrs = "sudo nixos-rebuild switch --flake path:/home/ondrej/infra";
+              nrs-servnix = "NIX_SSHOPTS='-i /home/ondrej/.ssh/id_ed25519_servnix' nixos-rebuild switch --flake path:${flakeRoot}#servnix --target-host root@2.31.56.62";
               nfu = "nix flake update --flake path:/home/ondrej/infra";
             };
             initContent = ''
