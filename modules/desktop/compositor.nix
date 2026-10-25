@@ -2,6 +2,39 @@
 {
   flake.modules.nixos.desktop =
     { pkgs, ... }:
+    let
+      emulatorToolbar = pkgs.writeShellApplication {
+        name = "park-emulator-toolbar";
+        runtimeInputs = [ pkgs.niri pkgs.jq ];
+        text = ''
+          park_toolbar() {
+            local workspace_id workspace_index
+            read -r workspace_id workspace_index < <(
+              niri msg --json workspaces | jq -r '.[] | select(.name == "9") | [.id, .idx] | @tsv'
+            ) || return 0
+            niri msg --json windows | jq -r --argjson target "$workspace_id" '
+              .[] | select(.app_id == "Emulator" and .title == "Emulator")
+              | select(.layout.window_size[0] > 0 and .layout.window_size[0] <= 100)
+              | select(.workspace_id != $target or .is_floating) | .id
+            ' | while read -r window_id; do
+              niri msg action move-window-to-tiling --id "$window_id"
+              niri msg action move-window-to-workspace --window-id "$window_id" --focus false "$workspace_index"
+            done
+          }
+
+          # Both emulator windows initially share a title. Check the toolbar's
+          # narrow geometry as well, so the phone window is never relocated.
+          park_toolbar
+          niri msg --json event-stream | while IFS= read -r event; do
+            case "$event" in
+              *WindowsChanged*|*WindowOpenedOrChanged*|*WindowLayoutsChanged*|*WorkspacesChanged*)
+                park_toolbar
+                ;;
+            esac
+          done
+        '';
+      };
+    in
     {
       programs.firefox.enable = true;
       programs.niri = {
@@ -104,13 +137,6 @@
                   scale = 1.25;
                 };
               }
-              # Park the Android emulator's separate toolbar before workspace 1.
-              {
-                workspace = {
-                  _args = [ "0" ];
-                  open-on-output = "HDMI-A-1";
-                };
-              }
               {
                 workspace = {
                   _args = [ "1" ];
@@ -123,8 +149,10 @@
                   open-on-output = "HDMI-A-1";
                 };
               }
+              { workspace._args = [ "9" ]; }
               { spawn-at-startup._args = [ "kitty" ]; }
               { spawn-at-startup._args = [ "firefox" ]; }
+              { spawn-at-startup._args = [ "${emulatorToolbar}/bin/park-emulator-toolbar" ]; }
               {
                 window-rule = {
                   geometry-corner-radius = 12;
@@ -168,19 +196,6 @@
                   { open-floating = true; }
                   { default-column-width.fixed = 1080; }
                   { default-window-height.fixed = 920; }
-                ];
-              }
-              {
-                window-rule._children = [
-                  {
-                    match._props = {
-                      app-id = "^Emulator$";
-                      title = "^Emulator$";
-                    };
-                  }
-                  { open-on-workspace = "0"; }
-                  { open-focused = false; }
-                  { open-floating = false; }
                 ];
               }
               {
@@ -398,7 +413,7 @@
               "Mod+6".focus-workspace = 6;
               "Mod+7".focus-workspace = 7;
               "Mod+8".focus-workspace = 8;
-              "Mod+9".focus-workspace = 9;
+              "Mod+9".focus-workspace = "9";
 
               # Move column to workspace by number
               "Mod+Ctrl+1".move-column-to-workspace = "1";
@@ -409,7 +424,7 @@
               "Mod+Ctrl+6".move-column-to-workspace = 6;
               "Mod+Ctrl+7".move-column-to-workspace = 7;
               "Mod+Ctrl+8".move-column-to-workspace = 8;
-              "Mod+Ctrl+9".move-column-to-workspace = 9;
+              "Mod+Ctrl+9".move-column-to-workspace = "9";
 
               # Consume/expel windows
               "Mod+BracketLeft".consume-or-expel-window-left = { };
